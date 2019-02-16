@@ -6,8 +6,8 @@ using Photon.Pun;
 public class PlayerMovement : MonoBehaviourPun, IPunObservable
 {
     public float speed;
-    float x;
-    float y;
+    /*float x;
+    float y;*/
 
     public Transform appearance;
     public Transform target;
@@ -28,8 +28,8 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     {
         if (photonView.IsMine)
         {
-            x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-            y = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+            float x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+            float y = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 
             target.Translate(x, y, 0f);
 
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
             appearance.position = target.position;
         }
 
-        if (x < 0)
+        /*if (x < 0)
         {
             target.localEulerAngles = new Vector3(0f, 180f, 0f);
         }
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
         {
             target.localEulerAngles = new Vector3(0f, 0f, 0f);
         }
-       /* if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             animator.SetBool("Shoot", true);
         }

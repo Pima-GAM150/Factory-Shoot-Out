@@ -12,6 +12,7 @@ public class NetworkedObjects : MonoBehaviour
 
     public static NetworkedObjects find;
 
+    int seed;
     private void Awake()
     {
         find = this;        
@@ -19,6 +20,11 @@ public class NetworkedObjects : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            seed = DateTime.Now.Millisecond + System.Threading.Thread.CurrentThread.GetHashCode();
+            print("seed");
+        }
         float xRange = UnityEngine.Random.Range(-world.bounds.extents.x, world.bounds.extents.x);
         float yRange = UnityEngine.Random.Range(-world.bounds.extents.y, world.bounds.extents.y);
 
