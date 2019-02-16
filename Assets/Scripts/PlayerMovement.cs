@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviourPun, IPunObservable
 {
-    bool Shooting;
-    float horiz;
-    float vert;
     public float speed;
+    float x;
+    float y;
+
+    public Transform appearance;
+    public Transform target;
+    Vector3 lastSynchedPos;
+
+    bool Shooting;
     public Rigidbody2D body;
     public Animator animator;
     public Transform character;
@@ -15,31 +21,35 @@ public class PlayerMovement : MonoBehaviour
     public float trigger;
     void Start()
     {
-        
+        animator.SetBool("Shoot", false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        horiz = Input.GetAxis("Horizontal") * speed;
-        vert = Input.GetAxis("Vertical") * speed;
-        if (body.velocity.magnitude > 0)
+        if (photonView.IsMine)
         {
-            animator.SetBool("Move", true);
+            x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+            y = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+
+            target.Translate(x, y, 0f);
+
+            if (!NetworkedObjects.find.world.bounds.Contains(target.position))
+            {
+                target.position = NetworkedObjects.find.world.bounds.ClosestPoint(target.position);
+            }
+            appearance.position = target.position;
         }
-        else
-        {
-            animator.SetBool("Move", false);
-        }
-        if (horiz < 0)
+
+        if (x < 0)
         {
             character.localEulerAngles = new Vector3(0f, 180f, 0f);
         }
-        else if (horiz > 0)
+        else if (x > 0)
         {
             character.localEulerAngles = new Vector3(0f, 0f, 0f);
         }
-        if (Input.GetButtonDown("Shoot"))
+        if (Input.GetButtonDown("Fire1"))
         {
             animator.SetBool("Shoot", true);
         }
@@ -52,8 +62,21 @@ public class PlayerMovement : MonoBehaviour
             }
         }*/
     }
-    private void FixedUpdate()
+
+    public void OnPhotonSerializeView( PhotonStream stream, PhotonMessageInfo info)
     {
-        body.velocity = new Vector2(horiz * speed, vert * speed);
+        if( stream.IsWriting)
+        {
+            if( lastSynchedPos != target.position)
+            {
+                lastSynchedPos = target.position;
+
+                stream.SendNext(target.position);
+            }
+        }
+        else
+        {
+            target.position = (Vector3)stream.ReceiveNext();
+        }
     }
 }
