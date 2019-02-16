@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     Vector3 lastSynchedPos;
 
     //bool Shooting;
-    public Rigidbody2D body;
+    //public Rigidbody2D body;
     public Animator animator;
     //float timer;
     //public float trigger;
