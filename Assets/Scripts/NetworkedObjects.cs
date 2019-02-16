@@ -6,7 +6,7 @@ using Photon.Pun;
 
 public class NetworkedObjects : MonoBehaviour
 {
-    public BoxCollider2D world;
+    public EdgeCollider2D world;
 
     [HideInInspector] public List<PhotonView> Players = new List<PhotonView>();
 
