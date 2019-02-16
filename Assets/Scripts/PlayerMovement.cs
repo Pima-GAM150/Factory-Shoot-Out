@@ -13,12 +13,11 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     public Transform target;
     Vector3 lastSynchedPos;
 
-    bool Shooting;
+    //bool Shooting;
     public Rigidbody2D body;
     public Animator animator;
-    public Transform character;
-    float timer;
-    public float trigger;
+    //float timer;
+    //public float trigger;
     void Start()
     {
         animator.SetBool("Shoot", false);
@@ -43,17 +42,17 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
         if (x < 0)
         {
-            character.localEulerAngles = new Vector3(0f, 180f, 0f);
+            target.localEulerAngles = new Vector3(0f, 180f, 0f);
         }
         else if (x > 0)
         {
-            character.localEulerAngles = new Vector3(0f, 0f, 0f);
+            target.localEulerAngles = new Vector3(0f, 0f, 0f);
         }
-        if (Input.GetButtonDown("Fire1"))
+       /* if (Input.GetButtonDown("Fire1"))
         {
             animator.SetBool("Shoot", true);
         }
-        /*if(animator.GetBool("Shoot", true))
+        if(animator.GetBool("Shoot", true))
         {
             timer += Time.time;
             if (timer > trigger)
