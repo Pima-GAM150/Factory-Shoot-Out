@@ -33,5 +33,6 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - SetColor
+  - SpawnBullet
   DisableAutoOpenWizard: 1
   ShowSettings: 0
