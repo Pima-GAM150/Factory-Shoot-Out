@@ -6,7 +6,7 @@ using Photon.Pun;
 
 public class NetworkedObjects : MonoBehaviour
 {
-    public EdgeCollider2D world;
+    public BoxCollider2D[] spawnBoxes;
 
     [HideInInspector] public List<PhotonView> Players = new List<PhotonView>();
 
@@ -25,10 +25,13 @@ public class NetworkedObjects : MonoBehaviour
             seed = DateTime.Now.Millisecond + System.Threading.Thread.CurrentThread.GetHashCode();
             print("seed");
         }
-        float xRange = UnityEngine.Random.Range(-world.bounds.extents.x, world.bounds.extents.x);
-        float yRange = UnityEngine.Random.Range(-world.bounds.extents.y, world.bounds.extents.y);
 
-        Vector3 spawnPos = world.bounds.center + new Vector3(xRange, yRange, 0f);
+        BoxCollider2D spawnBox = spawnBoxes[ Random.Range( 0, spawnBoxes.Length ) ];
+        
+        float xRange = UnityEngine.Random.Range(-spawnBox.bounds.extents.x, spawnBox.bounds.extents.x);
+        float yRange = UnityEngine.Random.Range(-spawnBox.bounds.extents.y, spawnBox.bounds.extents.y);
+spawnBox
+        Vector3 spawnPos = spawnBox.bounds.center + new Vector3(xRange, yRange, 0f);
         PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
     }
     public void AddPlayer( PhotonView player)
