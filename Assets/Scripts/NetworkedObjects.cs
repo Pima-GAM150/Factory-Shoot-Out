@@ -26,11 +26,11 @@ public class NetworkedObjects : MonoBehaviour
             print("seed");
         }
 
-        BoxCollider2D spawnBox = spawnBoxes[ Random.Range( 0, spawnBoxes.Length ) ];
-        
+        BoxCollider2D spawnBox = spawnBoxes[ UnityEngine.Random.Range( 0, spawnBoxes.Length ) ];
+
         float xRange = UnityEngine.Random.Range(-spawnBox.bounds.extents.x, spawnBox.bounds.extents.x);
         float yRange = UnityEngine.Random.Range(-spawnBox.bounds.extents.y, spawnBox.bounds.extents.y);
-spawnBox
+
         Vector3 spawnPos = spawnBox.bounds.center + new Vector3(xRange, yRange, 0f);
         PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
     }

@@ -33,10 +33,6 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
             target.Translate(x, y, 0f);
 
-            if (!NetworkedObjects.find.world.bounds.Contains(target.position))
-            {
-                target.position = NetworkedObjects.find.world.bounds.ClosestPoint(target.position);
-            }
             appearance.position = target.position;
         }
 
