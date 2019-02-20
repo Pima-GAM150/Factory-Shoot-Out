@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3359665474631228834}
   - component: {fileID: 3677622434913467291}
   - component: {fileID: 4887300735027925767}
+  - component: {fileID: 898835634426926201}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -50,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80def7290082b9a469caaec7f0d9d877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 0.1
   appearance: {fileID: 1623005097779617319}
   target: {fileID: 3468204550789110934}
   animator: {fileID: 6032105184259626550}
@@ -143,6 +144,22 @@ MonoBehaviour:
   spawnTarget: {fileID: 1623005097779617319}
   BulletPrefab: {fileID: 1547338076702460906, guid: 31e14cbe926bb8445b3b2cdcf16e4ba7,
     type: 3}
+--- !u!70 &898835634426926201
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623005097779617317}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.033478975, y: 0.020602405}
+  m_Size: {x: 0.5412049, y: 1.0412048}
+  m_Direction: 0
 --- !u!1 &2373895048278687330
 GameObject:
   m_ObjectHideFlags: 0
