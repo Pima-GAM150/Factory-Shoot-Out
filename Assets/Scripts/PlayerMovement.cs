@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     public Transform target;
     Vector3 lastSynchedPos;
 
+    public Rigidbody2D body;
+
     //bool Shooting;
     //public Rigidbody2D body;
     public Animator animator;
@@ -24,14 +26,14 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (photonView.IsMine)
         {
-            float x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-            float y = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+            float x = Input.GetAxis("Horizontal") * speed;
+            float y = Input.GetAxis("Vertical") * speed;
 
-            target.Translate(x, y, 0f);
+            body.velocity = new Vector3(x, y, 0f);
 
             appearance.position = target.position;
         }
