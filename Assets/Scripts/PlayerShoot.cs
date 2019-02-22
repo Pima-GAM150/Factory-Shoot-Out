@@ -19,13 +19,18 @@ public class PlayerShoot : MonoBehaviourPun
         if (!photonView.IsMine) return;
         if(Input.GetButtonDown("Fire1"))
         {
-            photonView.RPC("SpawnBullet", RpcTarget.All);
+            Vector3 worldMousePos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
+
+            photonView.RPC( "SpawnBullet", RpcTarget.All, (Vector2)worldMousePos );
         }
     }
 
     [PunRPC]
-    public void SpawnBullet()
+    public void SpawnBullet( Vector2 target )
     {
         Bullet newBullet = Instantiate<Bullet>(BulletPrefab, spawnTarget.position, Quaternion.identity);
+        Vector2 dirToTarget = (target - (Vector2)spawnTarget.transform.position).normalized;
+
+        newBullet.transform.right = (Vector3)dirToTarget;
     }
 }

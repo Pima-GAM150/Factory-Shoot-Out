@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 53680906}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spawn Zones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 234674002}
   - component: {fileID: 234674003}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnZone3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4446,7 +4446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 554741780}
   - component: {fileID: 554741781}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnZone5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4602,7 +4602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1039984926}
   - component: {fileID: 1039984927}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnZone4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4659,7 +4659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1040340895}
   - component: {fileID: 1040340896}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnZone2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4815,7 +4815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1063234432}
   - component: {fileID: 1063234433}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnZone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5162,7 +5162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1713539866}
   - component: {fileID: 1713539865}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnZone6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
