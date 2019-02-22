@@ -17,7 +17,7 @@ public class PlayerShoot : MonoBehaviourPun
     void Update()
     {
         if (!photonView.IsMine) return;
-        if(Input.GetButtonDown("Shoot"))
+        if(Input.GetButtonDown("Fire1"))
         {
             photonView.RPC("SpawnBullet", RpcTarget.All);
         }

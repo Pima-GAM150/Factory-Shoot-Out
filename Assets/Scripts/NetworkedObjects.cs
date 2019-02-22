@@ -23,7 +23,6 @@ public class NetworkedObjects : MonoBehaviour
         if (PhotonNetwork.IsMasterClient)
         {
             seed = DateTime.Now.Millisecond + System.Threading.Thread.CurrentThread.GetHashCode();
-            print("seed");
         }
 
         BoxCollider2D spawnBox = spawnBoxes[ UnityEngine.Random.Range( 0, spawnBoxes.Length ) ];
