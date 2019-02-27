@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLifetime: 5
+  Prefab: {fileID: 67, guid: c4d748b796851bc4eabd929675302a33, type: 3}
 --- !u!50 &107807834958353808
 Rigidbody2D:
   serializedVersion: 4

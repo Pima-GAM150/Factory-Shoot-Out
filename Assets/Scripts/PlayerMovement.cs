@@ -6,14 +6,15 @@ using Photon.Pun;
 public class PlayerMovement : MonoBehaviourPun, IPunObservable
 {
     public float speed;
+    public float lerpSpeed;
     /*float x;
     float y;*/
 
     public Transform appearance;
-    public Transform target;
     Vector3 lastSynchedPos;
 
     public Rigidbody2D body;
+    public CapsuleCollider2D Player;
 
     //bool Shooting;
     //public Rigidbody2D body;
@@ -33,47 +34,30 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
             float x = Input.GetAxis("Horizontal") * speed;
             float y = Input.GetAxis("Vertical") * speed;
 
-            body.velocity = new Vector3(x, y, 0f);
-
-            appearance.position = target.position;
+            body.velocity = new Vector2(x, y);
+            
+            appearance.position = body.transform.position;
         }
-
-        /*if (x < 0)
+        else
         {
-            target.localEulerAngles = new Vector3(0f, 180f, 0f);
+            appearance.position = Vector3.Lerp(appearance.position, body.transform.position, lerpSpeed);
         }
-        else if (x > 0)
-        {
-            target.localEulerAngles = new Vector3(0f, 0f, 0f);
-        }
-        if (Input.GetButtonDown("Fire1"))
-        {
-            animator.SetBool("Shoot", true);
-        }
-        if(animator.GetBool("Shoot", true))
-        {
-            timer += Time.time;
-            if (timer > trigger)
-            {
-                animator.SetBool("Shoot", false);
-            }
-        }*/
     }
 
     public void OnPhotonSerializeView( PhotonStream stream, PhotonMessageInfo info)
     {
         if( stream.IsWriting)
         {
-            if( lastSynchedPos != target.position)
-            {
-                lastSynchedPos = target.position;
-
-                stream.SendNext(target.position);
-            }
+            stream.SendNext(body.transform.position);
         }
         else
         {
-            target.position = (Vector3)stream.ReceiveNext();
+            body.transform.position = (Vector3)stream.ReceiveNext();
         }
+    }
+
+    public void Hit()
+    {
+        Player.enabled = false;
     }
 }

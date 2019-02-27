@@ -7,21 +7,21 @@ public class BulletCollision : MonoBehaviour
 {
 	public float maxLifetime;
 
+    public Player Prefab;
 	void Start() {
 		Destroy( this.gameObject, maxLifetime );
 	}
 
-	void OnTriggerEnter2D( Collider2D col ) {
-		print( "Bullet hit " + col.gameObject.name );
+	public void OnTriggerEnter2D( Collider2D col ) {
+        PlayerBody hitBody = col.GetComponent<PlayerBody>();
 
-		Player hitPlayer = col.GetComponent<Player>();
-
-		if( hitPlayer ) {
-			if( hitPlayer.photonView.IsMine ) {
+		if(hitBody) {
+			if( hitBody.player.photonView.IsMine ) {
 				return;
 			}
-		}
+            Prefab.GetComponent<PlayerMovement>().Hit();
 
-		Destroy( this.gameObject );
+            Destroy(this.gameObject);
+        }
 	}
 }
