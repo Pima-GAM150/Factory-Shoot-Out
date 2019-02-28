@@ -10,11 +10,10 @@ public class Bullet : MonoBehaviour
     // public float angle;
     public float speed;
     public Rigidbody2D body;
-    public Vector2 baseVel;
 
     void FixedUpdate() {
 
-        body.velocity = new Vector3( baseVel.x, baseVel.y, 0f ) + this.transform.right * speed;
+        body.velocity = this.transform.right * speed;
     }
 
     // void Start()
