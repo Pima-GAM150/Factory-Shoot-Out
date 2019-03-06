@@ -59,5 +59,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     public void Hit()
     {
         Player.enabled = false;
+        speed = 0;
+
     }
 }
