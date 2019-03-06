@@ -27,18 +27,35 @@ public class PlayerShoot : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
+        if (shooting == true)
+        {
+            Shoottimer += Time.deltaTime;
+        }
+        if (Shoottimer > ShootmaxTime)
+        {
+            animator.SetBool("Shoot", false);
+            shooting = false;
+
+            if( photonView.IsMine )
+            {
+                gameObject.GetComponent<PlayerMovement>().speed = 10;
+            }
+
+            Shoottimer = 0;
+        }
+
         if (!photonView.IsMine) return;
+
         if(Input.GetButtonDown("Fire1"))
         {
             if (BulletsShot < NumberofBullets&& shooting == false&& Reloading == false)
             {
-                animator.SetBool("Shoot", true);
+
                 gameObject.GetComponent<PlayerMovement>().speed = 0;
                 BulletsShot = 1+BulletsShot;
                 Vector3 worldMousePos = playerCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
 
                 photonView.RPC("SpawnBullet", RpcTarget.All, (Vector2)worldMousePos);
-                shooting = true;
             }   
         }
         if (Input.GetButtonDown("Fire2") && shooting == false)
@@ -57,24 +74,15 @@ public class PlayerShoot : MonoBehaviourPun
             Reloadtimer = 0;
             Reloading = false;
         }
-
-        if (shooting == true)
-        {
-            Shoottimer += Time.deltaTime;
-        }
-        if (Shoottimer > ShootmaxTime)
-        {
-            animator.SetBool("Shoot", false);
-            gameObject.GetComponent<PlayerMovement>().speed = 10;
-            Shoottimer = 0;
-            shooting = false;
-        }
     }
 
     [PunRPC]
     public void SpawnBullet( Vector2 target )
     {
+        animator.SetBool("Shoot", true);
+        shooting = true;
         Bullet newBullet = Instantiate<Bullet>(BulletPrefab, spawnTarget.position, Quaternion.identity);
+        newBullet.bulletCollision.owner = this;
         Vector2 dirToTarget = (target - (Vector2)spawnTarget.transform.position).normalized;
 
         newBullet.transform.right = (Vector3)dirToTarget;

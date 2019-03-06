@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
     public float speed;
     public Rigidbody2D body;
 
+    public BulletCollision bulletCollision;
+
     void FixedUpdate() {
 
         body.velocity = this.transform.right * speed;
