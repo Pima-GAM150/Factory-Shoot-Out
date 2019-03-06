@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLifetime: 1
-  Prefab: {fileID: 2991097316539833889, guid: c4d748b796851bc4eabd929675302a33, type: 3}
+  Prefab: {fileID: 106, guid: c4d748b796851bc4eabd929675302a33, type: 3}
 --- !u!114 &1547338076702460906
 MonoBehaviour:
   m_ObjectHideFlags: 0
