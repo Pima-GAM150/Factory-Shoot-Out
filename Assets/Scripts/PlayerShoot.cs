@@ -10,9 +10,12 @@ public class PlayerShoot : MonoBehaviourPun
     public Camera playerCamera;
     public Rigidbody2D body;
     public Animator animator;
-    public float timer;
-    public float maxTime;
+    public float Shoottimer;
+    public float ShootmaxTime;
     public bool shooting;
+    public float Reloadtimer;
+    public float ReloadmaxTime;
+    public bool Reloading;
     public float NumberofBullets;
     public float BulletsShot;
     // Start is called before the first frame update
@@ -27,7 +30,7 @@ public class PlayerShoot : MonoBehaviourPun
         if (!photonView.IsMine) return;
         if(Input.GetButtonDown("Fire1"))
         {
-            if (BulletsShot < NumberofBullets)
+            if (BulletsShot < NumberofBullets&& shooting == false&& Reloading == false)
             {
                 animator.SetBool("Shoot", true);
                 gameObject.GetComponent<PlayerMovement>().speed = 0;
@@ -38,20 +41,32 @@ public class PlayerShoot : MonoBehaviourPun
                 shooting = true;
             }   
         }
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && shooting == false)
         {
             BulletsShot = 0;
+            gameObject.GetComponent<PlayerMovement>().speed = 0;
+            Reloading = true;
+        }
+        if (Reloading == true)
+        {
+            Reloadtimer += Time.deltaTime;
+        }
+        if(Reloadtimer> ReloadmaxTime)
+        {
+            gameObject.GetComponent<PlayerMovement>().speed = 10;
+            Reloadtimer = 0;
+            Reloading = false;
         }
 
         if (shooting == true)
         {
-            timer += Time.deltaTime;
+            Shoottimer += Time.deltaTime;
         }
-        if (timer > maxTime)
+        if (Shoottimer > ShootmaxTime)
         {
             animator.SetBool("Shoot", false);
             gameObject.GetComponent<PlayerMovement>().speed = 10;
-            timer = 0;
+            Shoottimer = 0;
             shooting = false;
         }
     }

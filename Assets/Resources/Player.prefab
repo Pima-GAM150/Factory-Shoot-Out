@@ -115,9 +115,12 @@ MonoBehaviour:
   playerCamera: {fileID: 82}
   body: {fileID: 83}
   animator: {fileID: 6032105184259626550}
-  timer: 0
-  maxTime: 0.5
+  Shoottimer: 0
+  ShootmaxTime: 0.5
   shooting: 0
+  Reloadtimer: 0
+  ReloadmaxTime: 1
+  Reloading: 0
   NumberofBullets: 3
   BulletsShot: 0
 --- !u!114 &106
