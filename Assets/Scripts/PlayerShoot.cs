@@ -10,8 +10,9 @@ public class PlayerShoot : MonoBehaviourPun
     public Camera playerCamera;
     public Rigidbody2D body;
     public Animator animator;
-    float timer;
+    public float timer;
     public float maxTime;
+    public bool shooting;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,18 +25,25 @@ public class PlayerShoot : MonoBehaviourPun
         if (!photonView.IsMine) return;
         if(Input.GetButtonDown("Fire1"))
         {
-            timer = Time.time;
             animator.SetBool("Shoot", true);
             gameObject.GetComponent<PlayerMovement>().speed = 0;
             Vector3 worldMousePos = playerCamera.ScreenToWorldPoint( new Vector3( Input.mousePosition.x, Input.mousePosition.y, transform.position.z ) );
 
             photonView.RPC( "SpawnBullet", RpcTarget.All, (Vector2)worldMousePos );
-            if (timer > maxTime)
-            {
-                animator.SetBool("Shoot", false);
-                gameObject.GetComponent<PlayerMovement>().speed = 10;
-            }
+            shooting = true;
 
+
+        }
+        if (shooting == true)
+        {
+            timer += Time.deltaTime;
+        }
+        if (timer > maxTime)
+        {
+            animator.SetBool("Shoot", false);
+            gameObject.GetComponent<PlayerMovement>().speed = 10;
+            timer = 0;
+            shooting = false;
         }
     }
 

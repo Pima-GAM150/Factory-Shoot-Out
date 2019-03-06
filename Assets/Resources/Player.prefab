@@ -115,6 +115,7 @@ MonoBehaviour:
   playerCamera: {fileID: 53}
   body: {fileID: 55}
   animator: {fileID: 5330496699592410153}
+  maxTime: 0.5
 --- !u!114 &2991097316539833889
 MonoBehaviour:
   m_ObjectHideFlags: 0
