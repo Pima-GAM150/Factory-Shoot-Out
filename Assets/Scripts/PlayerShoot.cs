@@ -9,6 +9,15 @@ public class PlayerShoot : MonoBehaviourPun
     public Bullet BulletPrefab;
     public Camera playerCamera;
     public Rigidbody2D body;
+    public Animator animator;
+    public float Shoottimer;
+    public float ShootmaxTime;
+    public bool shooting;
+    public float Reloadtimer;
+    public float ReloadmaxTime;
+    public bool Reloading;
+    public float NumberofBullets;
+    public float BulletsShot;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +30,44 @@ public class PlayerShoot : MonoBehaviourPun
         if (!photonView.IsMine) return;
         if(Input.GetButtonDown("Fire1"))
         {
-            Vector3 worldMousePos = playerCamera.ScreenToWorldPoint( new Vector3( Input.mousePosition.x, Input.mousePosition.y, transform.position.z ) );
+            if (BulletsShot < NumberofBullets&& shooting == false&& Reloading == false)
+            {
+                animator.SetBool("Shoot", true);
+                gameObject.GetComponent<PlayerMovement>().speed = 0;
+                BulletsShot = 1+BulletsShot;
+                Vector3 worldMousePos = playerCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
 
-            photonView.RPC( "SpawnBullet", RpcTarget.All, (Vector2)worldMousePos );
+                photonView.RPC("SpawnBullet", RpcTarget.All, (Vector2)worldMousePos);
+                shooting = true;
+            }   
+        }
+        if (Input.GetButtonDown("Fire2") && shooting == false)
+        {
+            BulletsShot = 0;
+            gameObject.GetComponent<PlayerMovement>().speed = 0;
+            Reloading = true;
+        }
+        if (Reloading == true)
+        {
+            Reloadtimer += Time.deltaTime;
+        }
+        if(Reloadtimer> ReloadmaxTime)
+        {
+            gameObject.GetComponent<PlayerMovement>().speed = 10;
+            Reloadtimer = 0;
+            Reloading = false;
+        }
+
+        if (shooting == true)
+        {
+            Shoottimer += Time.deltaTime;
+        }
+        if (Shoottimer > ShootmaxTime)
+        {
+            animator.SetBool("Shoot", false);
+            gameObject.GetComponent<PlayerMovement>().speed = 10;
+            Shoottimer = 0;
+            shooting = false;
         }
     }
 

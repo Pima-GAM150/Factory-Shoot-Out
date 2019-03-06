@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     void Start()
     {
         animator.SetBool("Shoot", false);
+        Player.enabled = true;
     }
 
     // Update is called once per frame
@@ -59,5 +60,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     public void Hit()
     {
         Player.enabled = false;
+        speed = 0;
+        animator.SetBool("Dead", true);
     }
 }
