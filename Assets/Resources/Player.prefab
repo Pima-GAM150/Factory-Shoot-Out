@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 76}
   - {fileID: 77}
-  - {fileID: 5330496699592410157}
+  - {fileID: 2914623466046455442}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,10 +52,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   lerpSpeed: 0.1
-  appearance: {fileID: 5330496699592410157}
+  appearance: {fileID: 2914623466046455442}
   body: {fileID: 83}
   Player: {fileID: 85}
-  animator: {fileID: 5330496699592410148}
+  animator: {fileID: 6032105184259626550}
 --- !u!114 &100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,12 +109,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4336295a5354ea7448254c1576280c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTarget: {fileID: 5330496699592410157}
+  spawnTarget: {fileID: 2914623466046455442}
   BulletPrefab: {fileID: 1547338076702460906, guid: 31e14cbe926bb8445b3b2cdcf16e4ba7,
     type: 3}
   playerCamera: {fileID: 82}
   body: {fileID: 83}
-  animator: {fileID: 5330496699592410148}
+  animator: {fileID: 6032105184259626550}
   Shoottimer: 0
   ShootmaxTime: 0.5
   shooting: 0
@@ -383,13 +383,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4ae662ed68ac4aadaa02a5fc1a8b4d9, type: 3}
---- !u!4 &5330496699592410157 stripped
+--- !u!4 &2914623466046455442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7028826096068885231, guid: f4ae662ed68ac4aadaa02a5fc1a8b4d9,
     type: 3}
   m_PrefabInstance: {fileID: 5330496699592410237}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &5330496699592410148 stripped
+--- !u!95 &6032105184259626550 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1895994780774519371, guid: f4ae662ed68ac4aadaa02a5fc1a8b4d9,
     type: 3}
