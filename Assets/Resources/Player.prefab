@@ -32,8 +32,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
-  - {fileID: 123}
-  - {fileID: 124}
+  - {fileID: 76}
+  - {fileID: 77}
   - {fileID: 2914623466046455442}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -53,10 +53,10 @@ MonoBehaviour:
   speed: 0
   lerpSpeed: 0.1
   appearance: {fileID: 2914623466046455442}
-  body: {fileID: 144}
-  Player: {fileID: 147}
+  body: {fileID: 83}
+  Player: {fileID: 85}
   animator: {fileID: 6032105184259626550}
---- !u!114 &183
+--- !u!114 &100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,8 +112,8 @@ MonoBehaviour:
   spawnTarget: {fileID: 2914623466046455442}
   BulletPrefab: {fileID: 1547338076702460906, guid: 31e14cbe926bb8445b3b2cdcf16e4ba7,
     type: 3}
-  playerCamera: {fileID: 143}
-  body: {fileID: 144}
+  playerCamera: {fileID: 82}
+  body: {fileID: 83}
   animator: {fileID: 6032105184259626550}
   Shoottimer: 0
   ShootmaxTime: 0.5
