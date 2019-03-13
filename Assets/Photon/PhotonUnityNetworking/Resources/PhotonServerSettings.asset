@@ -34,5 +34,6 @@ MonoBehaviour:
   - RespawnSpaceship
   - SetColor
   - SpawnBullet
+  - ReloadOverNetwork
   DisableAutoOpenWizard: 1
   ShowSettings: 1

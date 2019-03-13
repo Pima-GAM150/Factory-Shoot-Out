@@ -18,6 +18,8 @@ public class PlayerShoot : MonoBehaviourPun
     public bool Reloading;
     public float NumberofBullets;
     public float BulletsShot;
+
+    public AudioSource reloadSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,22 +60,11 @@ public class PlayerShoot : MonoBehaviourPun
                 photonView.RPC("SpawnBullet", RpcTarget.All, (Vector2)worldMousePos);
             }   
         }
-        if (Input.GetButtonDown("Fire2") && shooting == false)
+        if (Input.GetButtonDown("Fire2") && shooting == false && Reloading == false )
         {
-            BulletsShot = 0;
-            gameObject.GetComponent<PlayerMovement>().speed = 0;
-            Reloading = true;
-            FindObjectOfType<Audiomanager>().Play("Reloading");
-        }
-        if (Reloading == true)
-        {
-            Reloadtimer += Time.deltaTime;
-        }
-        if(Reloadtimer> ReloadmaxTime)
-        {
-            gameObject.GetComponent<PlayerMovement>().speed = 10;
-            Reloadtimer = 0;
-            Reloading = false;
+            // FindObjectOfType<Audiomanager>().Play("Reloading");
+
+            photonView.RPC("ReloadOverNetwork", RpcTarget.All, BulletsShot);
         }
     }
 
@@ -87,5 +78,34 @@ public class PlayerShoot : MonoBehaviourPun
         Vector2 dirToTarget = (target - (Vector2)spawnTarget.transform.position).normalized;
 
         newBullet.transform.right = (Vector3)dirToTarget;
+    }
+
+    IEnumerator Reload( float bulletsToReload )
+    {
+        Reloading = true;
+
+        gameObject.GetComponent<PlayerMovement>().speed = 0;
+
+        float bulletsReloaded = 0f;
+
+        while( bulletsReloaded < bulletsToReload)
+        {
+            reloadSound.Play();
+            bulletsReloaded += 1f;
+
+            yield return new WaitForSeconds( 1f / bulletsToReload);
+        }
+
+        Reloading = false;
+
+        gameObject.GetComponent<PlayerMovement>().speed = 10;
+        print("Set speed to 10");
+        BulletsShot = 0;
+    }
+
+    [PunRPC]
+    public void ReloadOverNetwork( float bulletsToReload )
+    {
+        StartCoroutine(Reload( bulletsToReload ));
     }
 }

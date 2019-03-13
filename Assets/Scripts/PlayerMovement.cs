@@ -5,7 +5,13 @@ using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviourPun, IPunObservable
 {
-    public float speed;
+    public float speed
+    {
+        get { return _speed; }
+        set { _speed = value; print("Set speed to " + value); }
+    }
+    float _speed;
+
     public float lerpSpeed;
     /*float x;
     float y;*/
@@ -61,6 +67,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     {
         Player.enabled = false;
         speed = 0;
+        print("Set speed to " + speed);
         animator.SetBool("Dead", true);
     }
 }

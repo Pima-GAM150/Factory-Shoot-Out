@@ -27,7 +27,6 @@ public class BulletCollision : MonoBehaviour
         }
         if (hitBomb)
         {
-            print("Hit Explosive");
             hitBomb.Hit();
             Destroy(this.gameObject);
         }
