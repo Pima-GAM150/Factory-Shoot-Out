@@ -46,7 +46,13 @@ MonoBehaviour:
   sounds:
   - name: Theme
     clip: {fileID: 8300000, guid: 2c472590c579b914782494d88b33f9c3, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: Reloading
+    clip: {fileID: 8300000, guid: 2123610d60bbd9a4b8bb15a093d16cd5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}

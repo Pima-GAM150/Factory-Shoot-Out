@@ -46,6 +46,7 @@ public class PlayerShoot : MonoBehaviourPun
             BulletsShot = 0;
             gameObject.GetComponent<PlayerMovement>().speed = 0;
             Reloading = true;
+            FindObjectOfType<Audiomanager>().Play("Reloading");
         }
         if (Reloading == true)
         {
