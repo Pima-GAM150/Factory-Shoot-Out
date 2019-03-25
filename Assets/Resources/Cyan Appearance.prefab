@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6965071359182553094}
   - component: {fileID: 6965071359182553095}
   - component: {fileID: 6965071359182553092}
+  - component: {fileID: 918796432678299662}
   m_Layer: 0
   m_Name: Cyan Appearance
   m_TagString: Untagged
@@ -99,3 +100,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &918796432678299662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6965071359182553093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1a314be3ed343828704b8504279494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6965071359182553095}
+  animator: {fileID: 6965071359182553092}
+  bulletSpawnLoc: {fileID: 6965071359182553094}

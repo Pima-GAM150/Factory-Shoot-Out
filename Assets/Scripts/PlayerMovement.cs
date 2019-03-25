@@ -15,18 +15,16 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
     public float lerpSpeed;
 
-    public Transform appearance;
+    public PlayerAppearance appearance;
     Vector3 lastSynchedPos;
 
     public Rigidbody2D body;
     public CapsuleCollider2D Player;
     public bool alive;
 
-    public Animator animator;
-
     void Start()
     {
-        animator.SetBool("Shoot", false);
+        appearance.skin.animator.SetBool("Shoot", false);
         Player.enabled = true;
         alive = true;
     }
@@ -41,11 +39,11 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
             body.velocity = new Vector2(x, y);
             
-            appearance.position = body.transform.position;
+            appearance.skin.transform.position = body.transform.position;
         }
         else
         {
-            appearance.position = Vector3.Lerp(appearance.position, body.transform.position, lerpSpeed);
+            appearance.skin.transform.position = Vector3.Lerp(appearance.skin.transform.position, body.transform.position, lerpSpeed);
         }
     }
 
@@ -68,6 +66,6 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
         gameSpeed = 0;
         speed = 0;
         alive = false;
-        animator.SetBool("Dead", true);
+        appearance.skin.animator.SetBool("Dead", true);
     }
 }

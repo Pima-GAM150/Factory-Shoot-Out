@@ -5,11 +5,11 @@ using Photon.Pun;
 
 public class PlayerShoot : MonoBehaviourPun
 {
-    public Transform spawnTarget;
+    // public Transform spawnTarget; // removed because the spawn target is now instantiated dynamically as part of the player's skin
     public Bullet BulletPrefab;
     public Camera playerCamera;
     public Rigidbody2D body;
-    public Animator animator;
+    public PlayerAppearance appearance;
     public float Shoottimer;
     public float ShootmaxTime;
     public bool shooting;
@@ -35,7 +35,7 @@ public class PlayerShoot : MonoBehaviourPun
         }
         if (Shoottimer > ShootmaxTime)
         {
-            animator.SetBool("Shoot", false);
+            appearance.skin.animator.SetBool("Shoot", false);
             shooting = false;
 
             if( photonView.IsMine )
@@ -71,11 +71,11 @@ public class PlayerShoot : MonoBehaviourPun
     [PunRPC]
     public void SpawnBullet( Vector2 target )
     {
-        animator.SetBool("Shoot", true);
+        appearance.skin.animator.SetBool("Shoot", true);
         shooting = true;
-        Bullet newBullet = Instantiate<Bullet>(BulletPrefab, spawnTarget.position, Quaternion.identity);
+        Bullet newBullet = Instantiate<Bullet>(BulletPrefab, appearance.skin.bulletSpawnLoc.position, Quaternion.identity);
         newBullet.bulletCollision.owner = this;
-        Vector2 dirToTarget = (target - (Vector2)spawnTarget.transform.position).normalized;
+        Vector2 dirToTarget = (target - (Vector2)appearance.skin.bulletSpawnLoc.position).normalized;
 
         newBullet.transform.right = (Vector3)dirToTarget;
     }

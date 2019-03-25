@@ -5,16 +5,16 @@ using Photon.Pun;
 
 public class CameraController : MonoBehaviour
 {
-	public PlayerMovement player;
+	public PlayerAppearance appearance;
     // Start is called before the first frame update
     void Start() 
     {
-        if(!player.photonView.IsMine)
+        if(!appearance.photonView.IsMine)
         {
             this.gameObject.SetActive(false);
         }
         else {
-        	transform.parent = player.appearance;
+        	transform.parent = appearance.transform;
         }
     }
 }
