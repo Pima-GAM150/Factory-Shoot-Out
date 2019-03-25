@@ -5,7 +5,7 @@ using Photon.Pun;
 
 public class CameraController : MonoBehaviour
 {
-	public PlayerAppearance appearance;
+	public PlayerShoot appearance;
     // Start is called before the first frame update
     void Start() 
     {
