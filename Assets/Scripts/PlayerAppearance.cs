@@ -13,7 +13,9 @@ public class PlayerAppearance : MonoBehaviourPun
 	// new
 	public PlayerSkin[] playerSkins;
 	public PlayerSkin skin;
-  
+
+  public Camera playerCam;
+
   [PunRPC]
   public void SetColor( int order )
   {
@@ -21,5 +23,14 @@ public class PlayerAppearance : MonoBehaviourPun
 
   	skin = Instantiate<PlayerSkin>( playerSkins[order] );
     skin.transform.parent = transform;
+
+    // handle camera
+    if( !photonView.IsMine ) {
+      playerCam.gameObject.SetActive( false );
+    }
+    else {
+      playerCam.transform.parent = skin.transform;
+      playerCam.transform.localPosition = new Vector3( 0f, 0f, playerCam.transform.localPosition.z );
+    }
   }
 }

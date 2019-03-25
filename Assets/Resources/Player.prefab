@@ -76,6 +76,7 @@ MonoBehaviour:
   - {fileID: 7841391492846940015, guid: 6bdb08e805607b448b2f963ee7b30967, type: 3}
   - {fileID: 918796432678299662, guid: 51fbb91314488e846812fe29f476ef7e, type: 3}
   skin: {fileID: 8447079543483460246}
+  playerCam: {fileID: 143}
 --- !u!114 &185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +357,6 @@ GameObject:
   m_Component:
   - component: {fileID: 124}
   - component: {fileID: 143}
-  - component: {fileID: 186}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -420,19 +420,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a3c93d125c1f4f3eae06a7980a0b62d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  appearance: {fileID: 185}
 --- !u!1001 &5330496699592410237
 PrefabInstance:
   m_ObjectHideFlags: 0
