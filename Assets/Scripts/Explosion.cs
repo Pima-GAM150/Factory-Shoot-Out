@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Rigidbody2D hitbox;
+    public Animator animator;
+    public CapsuleCollider2D box;
+    public CircleCollider2D ExplosionBox;
+    public void OnTriggerEnter2D(Collider2D col)
     {
-        
-    }
+        PlayerBody hitBody = col.GetComponent<PlayerBody>();
+        if (hitBody)
+        {
+            hitBody.movement.Hit();
 
-    // Update is called once per frame
-    void Update()
+
+        }
+    }
+        public void Hit()
     {
-        
+        animator.SetBool("Boom", true);
+        box.enabled = false;
+        ExplosionBox.enabled = true;
+    }
+    public void DoneExploding()
+    {
+        Destroy(this.gameObject);
     }
 }
