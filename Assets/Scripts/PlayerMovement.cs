@@ -11,26 +11,24 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
         set { _speed = value; print("Set speed to " + value); }
     }
     float _speed;
+    public float gameSpeed;
 
     public float lerpSpeed;
-    /*float x;
-    float y;*/
 
     public Transform appearance;
     Vector3 lastSynchedPos;
 
     public Rigidbody2D body;
     public CapsuleCollider2D Player;
+    public bool alive;
 
-    //bool Shooting;
-    //public Rigidbody2D body;
     public Animator animator;
-    //float timer;
-    //public float trigger;
+
     void Start()
     {
         animator.SetBool("Shoot", false);
         Player.enabled = true;
+        alive = true;
     }
 
     // Update is called once per frame
@@ -65,9 +63,11 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
     public void Hit()
     {
+        print("HIT!");
         Player.enabled = false;
+        gameSpeed = 0;
         speed = 0;
-        print("Set speed to " + speed);
+        alive = false;
         animator.SetBool("Dead", true);
     }
 }

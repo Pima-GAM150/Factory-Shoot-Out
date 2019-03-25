@@ -40,7 +40,7 @@ public class PlayerShoot : MonoBehaviourPun
 
             if( photonView.IsMine )
             {
-                gameObject.GetComponent<PlayerMovement>().speed = 10;
+                gameObject.GetComponent<PlayerMovement>().speed = gameObject.GetComponent<PlayerMovement>().gameSpeed;
             }
 
             Shoottimer = 0;
@@ -50,7 +50,7 @@ public class PlayerShoot : MonoBehaviourPun
 
         if(Input.GetButtonDown("Fire1"))
         {
-            if (BulletsShot < NumberofBullets&& shooting == false&& Reloading == false)
+            if (BulletsShot < NumberofBullets && shooting == false && Reloading == false && gameObject.GetComponent<PlayerMovement>().alive == true)
             {
 
                 gameObject.GetComponent<PlayerMovement>().speed = 0;
@@ -60,7 +60,7 @@ public class PlayerShoot : MonoBehaviourPun
                 photonView.RPC("SpawnBullet", RpcTarget.All, (Vector2)worldMousePos);
             }   
         }
-        if (Input.GetButtonDown("Fire2") && shooting == false && Reloading == false )
+        if (Input.GetButtonDown("Fire2") && shooting == false && Reloading == false && gameObject.GetComponent<PlayerMovement>().alive == true)
         {
             // FindObjectOfType<Audiomanager>().Play("Reloading");
 
@@ -98,8 +98,8 @@ public class PlayerShoot : MonoBehaviourPun
 
         Reloading = false;
 
-        gameObject.GetComponent<PlayerMovement>().speed = 10;
-        print("Set speed to 10");
+        gameObject.GetComponent<PlayerMovement>().speed = gameObject.GetComponent<PlayerMovement>().gameSpeed;
+        print("Set speed to " + gameObject.GetComponent<PlayerMovement>().gameSpeed);
         BulletsShot = 0;
     }
 
