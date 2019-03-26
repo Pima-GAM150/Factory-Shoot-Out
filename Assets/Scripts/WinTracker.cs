@@ -13,6 +13,6 @@ public class WinTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        gameObject.GetComponent<NetworkedObjects>.Players.PlayerMovement.alive = false;
     }
 }
