@@ -1,18 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class WinTracker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    int playersLeftAlive = 0;
+    Player lastPlayerAlive = null;
 
-    // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<NetworkedObjects>.Players.PlayerMovement.alive = false;
+ 
+        foreach( Player player in NetworkedObjects.find.Players)
+        {
+            if(player.GetComponent<PlayerMovement>().alive)
+            {
+                lastPlayerAlive = player;
+                playersLeftAlive++;
+            }
+
+            if ( playersLeftAlive == 1)
+            {
+                SceneManager.LoadScene(Random.Range(3,6));
+            }
+        }
     }
 }
