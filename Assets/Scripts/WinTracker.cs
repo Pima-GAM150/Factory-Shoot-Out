@@ -6,24 +6,37 @@ using Photon.Pun;
 
 public class WinTracker : MonoBehaviour
 {
-    int playersLeftAlive = 0;
-    Player lastPlayerAlive = null;
+    public int playersLeftAlive = 0;
+    public PhotonView lastPlayerAlive = null;
+
 
     void Update()
     {
- 
-        foreach( Player player in NetworkedObjects.find.Players)
+        DontDestroyOnLoad(gameObject);
+        StartCoroutine(Wait());
+        foreach ( PhotonView player in NetworkedObjects.find.Players)
         {
-            if(player.GetComponent<PlayerMovement>().alive)
+            
+            if (player.GetComponent<PlayerMovement>().alive)
             {
                 lastPlayerAlive = player;
                 playersLeftAlive++;
             }
-
-            if ( playersLeftAlive == 1)
-            {
-                SceneManager.LoadScene(Random.Range(3,6));
-            }
         }
+
+        if (playersLeftAlive == 1)
+        {
+            winnersCrown();
+            //SceneManager.LoadScene(Random.Range(3, 6));
+            //gameObject.GetComponent<lastPlayerAlive>
+        }
+    }
+    public void winnersCrown()
+    {
+        print("Winner!");
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(10);
     }
 }
