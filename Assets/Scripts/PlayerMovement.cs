@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
         appearance.skin.animator.SetBool("Shoot", false);
         Player.enabled = true;
         alive = true;
+        gameSpeed = gameObject.GetComponent<OptionsSettings>().setSpeed;
     }
 
     // Update is called once per frame
