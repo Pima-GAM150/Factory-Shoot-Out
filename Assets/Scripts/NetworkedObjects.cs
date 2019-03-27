@@ -15,7 +15,8 @@ public class NetworkedObjects : MonoBehaviour
     int seed;
     private void Awake()
     {
-        find = this;        
+        find = this;
+        //DontDestroyOnLoad(gameObject);
     }
     // Update is called once per frame
     private void Start()

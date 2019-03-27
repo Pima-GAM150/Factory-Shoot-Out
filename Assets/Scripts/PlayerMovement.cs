@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
     public void Hit()
     {
-        print("HIT!");
+        FindObjectOfType<Audiomanager>().Play("Death");
         Player.enabled = false;
         gameSpeed = 0;
         speed = 0;
