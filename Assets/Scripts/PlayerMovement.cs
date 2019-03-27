@@ -88,9 +88,11 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     }
 
     void DeclareWinner( PlayerMovement player ) {
-        // add score to a scorekeeper if desired (the scorekeeper should be DontDestroyOnLoad if you want it to last between matches)
 
         if( player.photonView.IsMine ) {
+            // add score
+            int wins = PlayerPrefs.GetInt( "wins", 0 );
+            PlayerPrefs.SetInt( "wins", wins + 1 );
             // could show win screen to winner
         }
         else {
