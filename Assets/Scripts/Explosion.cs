@@ -11,16 +11,22 @@ public class Explosion : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D col)
     {
         PlayerBody hitBody = col.GetComponent<PlayerBody>();
+        Explosion hitBomb = col.GetComponent<Explosion>();
         if (hitBody)
         {
             hitBody.movement.Hit();
 
 
         }
+        if (hitBomb)
+        {
+            Hit();
+        }
     }
         public void Hit()
     {
         animator.SetBool("Boom", true);
+        FindObjectOfType<Audiomanager>().Play("Explosion");
         box.enabled = false;
         ExplosionBox.enabled = true;
     }

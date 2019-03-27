@@ -9,7 +9,7 @@ using Photon.Pun;
 public class JoinGame : MonoBehaviourPunCallbacks
 {
 
-    const int gameSceneIndex = 1;
+    const int gameSceneIndex = 3;
     public TextMeshProUGUI label;
 
     // Start is called before the first frame update

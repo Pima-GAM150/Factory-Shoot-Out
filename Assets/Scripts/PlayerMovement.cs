@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviourPun, IPunObservable
@@ -11,26 +12,25 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
         set { _speed = value; print("Set speed to " + value); }
     }
     float _speed;
+    public float gameSpeed;
 
     public float lerpSpeed;
-    /*float x;
-    float y;*/
 
-    public Transform appearance;
+    public Sprite Crown;
+    public PlayerAppearance appearance;
     Vector3 lastSynchedPos;
 
     public Rigidbody2D body;
     public CapsuleCollider2D Player;
+    public bool alive { get; set; }
 
-    //bool Shooting;
-    //public Rigidbody2D body;
-    public Animator animator;
-    //float timer;
-    //public float trigger;
     void Start()
     {
-        animator.SetBool("Shoot", false);
+        appearance.skin.transform.position = body.transform.position;
+        appearance.skin.animator.SetBool("Shoot", false);
         Player.enabled = true;
+        alive = true;
+        // gameSpeed = gameObject.GetComponent<OptionsSettings>().setSpeed;
     }
 
     // Update is called once per frame
@@ -43,11 +43,11 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
             body.velocity = new Vector2(x, y);
             
-            appearance.position = body.transform.position;
+            appearance.skin.transform.position = body.transform.position;
         }
         else
         {
-            appearance.position = Vector3.Lerp(appearance.position, body.transform.position, lerpSpeed);
+            appearance.skin.transform.position = Vector3.Lerp(appearance.skin.transform.position, body.transform.position, lerpSpeed);
         }
     }
 
@@ -65,9 +65,57 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
     public void Hit()
     {
+        FindObjectOfType<Audiomanager>().Play("Death");
         Player.enabled = false;
+        gameSpeed = 0;
         speed = 0;
-        print("Set speed to " + speed);
-        animator.SetBool("Dead", true);
+        alive = false;
+        appearance.skin.animator.SetBool("Dead", true);
+
+        int playersLeftAlive = 0;
+        PlayerMovement lastPlayerAlive = null;
+        foreach( PhotonView player in NetworkedObjects.find.Players ) {
+
+            PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
+            if( playerMovement.alive ) {
+                lastPlayerAlive = playerMovement;
+                playersLeftAlive++;
+            }
+        }
+
+        if( playersLeftAlive == 1 ) {
+            DeclareWinner( lastPlayerAlive );
+        }
+    }
+
+    void DeclareWinner( PlayerMovement player ) {
+
+        if( player.photonView.IsMine ) {
+            // add score
+            FindObjectOfType<Audiomanager>().Play("Victory");
+            BigCrown();
+            int wins = PlayerPrefs.GetInt( "wins", 0 );
+            PlayerPrefs.SetInt( "wins", wins + 1 );
+ 
+        }
+        else {
+            // and lose screen to losers
+        }
+
+        // could reload scene here or load next map:
+        if( PhotonNetwork.IsMasterClient ) {
+            PlayerPrefs.SetInt( "nextLevel", 3 );
+            PhotonNetwork.LoadLevel( 7 );
+        }
+    }
+
+    void BigCrown()
+    {
+        photonView.RPC("SpawnCrown", RpcTarget.All);
+    }
+    [PunRPC]
+    public void SpawnCrown()
+    {
+        Instantiate(Crown);
     }
 }

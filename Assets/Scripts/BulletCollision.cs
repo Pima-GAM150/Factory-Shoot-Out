@@ -30,5 +30,9 @@ public class BulletCollision : MonoBehaviour
             hitBomb.Hit();
             Destroy(this.gameObject);
         }
+        if( col.gameObject.name == "World Border")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

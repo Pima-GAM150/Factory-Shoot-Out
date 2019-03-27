@@ -35,5 +35,7 @@ MonoBehaviour:
   - SetColor
   - SpawnBullet
   - ReloadOverNetwork
+  - SpawnExplosive
+  - SpawnCrown
   DisableAutoOpenWizard: 1
   ShowSettings: 1

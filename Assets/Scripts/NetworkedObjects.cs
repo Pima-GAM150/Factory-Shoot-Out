@@ -8,14 +8,15 @@ public class NetworkedObjects : MonoBehaviour
 {
     public BoxCollider2D[] spawnBoxes;
 
-    [HideInInspector] public List<PhotonView> Players = new List<PhotonView>();
+    public List<PhotonView> Players = new List<PhotonView>();
 
     public static NetworkedObjects find;
 
     int seed;
     private void Awake()
     {
-        find = this;        
+        find = this;
+        //DontDestroyOnLoad(gameObject);
     }
     // Update is called once per frame
     private void Start()

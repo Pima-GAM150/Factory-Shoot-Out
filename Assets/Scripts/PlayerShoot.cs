@@ -5,11 +5,11 @@ using Photon.Pun;
 
 public class PlayerShoot : MonoBehaviourPun
 {
-    public Transform spawnTarget;
+    // public Transform spawnTarget; // removed because the spawn target is now instantiated dynamically as part of the player's skin
     public Bullet BulletPrefab;
     public Camera playerCamera;
     public Rigidbody2D body;
-    public Animator animator;
+    public PlayerAppearance appearance;
     public float Shoottimer;
     public float ShootmaxTime;
     public bool shooting;
@@ -23,7 +23,7 @@ public class PlayerShoot : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
-        
+        // NumberofBullets = gameObject.GetComponent<OptionsSettings>().setBulletLimit;
     }
 
     // Update is called once per frame
@@ -35,12 +35,12 @@ public class PlayerShoot : MonoBehaviourPun
         }
         if (Shoottimer > ShootmaxTime)
         {
-            animator.SetBool("Shoot", false);
+            appearance.skin.animator.SetBool("Shoot", false);
             shooting = false;
 
             if( photonView.IsMine )
             {
-                gameObject.GetComponent<PlayerMovement>().speed = 10;
+                gameObject.GetComponent<PlayerMovement>().speed = gameObject.GetComponent<PlayerMovement>().gameSpeed;
             }
 
             Shoottimer = 0;
@@ -50,7 +50,7 @@ public class PlayerShoot : MonoBehaviourPun
 
         if(Input.GetButtonDown("Fire1"))
         {
-            if (BulletsShot < NumberofBullets&& shooting == false&& Reloading == false)
+            if (BulletsShot < NumberofBullets && shooting == false && Reloading == false && gameObject.GetComponent<PlayerMovement>().alive == true)
             {
 
                 gameObject.GetComponent<PlayerMovement>().speed = 0;
@@ -60,7 +60,7 @@ public class PlayerShoot : MonoBehaviourPun
                 photonView.RPC("SpawnBullet", RpcTarget.All, (Vector2)worldMousePos);
             }   
         }
-        if (Input.GetButtonDown("Fire2") && shooting == false && Reloading == false )
+        if (Input.GetButtonDown("Fire2") && shooting == false && Reloading == false && gameObject.GetComponent<PlayerMovement>().alive == true)
         {
             // FindObjectOfType<Audiomanager>().Play("Reloading");
 
@@ -71,11 +71,11 @@ public class PlayerShoot : MonoBehaviourPun
     [PunRPC]
     public void SpawnBullet( Vector2 target )
     {
-        animator.SetBool("Shoot", true);
+        appearance.skin.animator.SetBool("Shoot", true);
         shooting = true;
-        Bullet newBullet = Instantiate<Bullet>(BulletPrefab, spawnTarget.position, Quaternion.identity);
+        Bullet newBullet = Instantiate<Bullet>(BulletPrefab, appearance.skin.bulletSpawnLoc.position, Quaternion.identity);
         newBullet.bulletCollision.owner = this;
-        Vector2 dirToTarget = (target - (Vector2)spawnTarget.transform.position).normalized;
+        Vector2 dirToTarget = (target - (Vector2)appearance.skin.bulletSpawnLoc.position).normalized;
 
         newBullet.transform.right = (Vector3)dirToTarget;
     }
@@ -98,8 +98,8 @@ public class PlayerShoot : MonoBehaviourPun
 
         Reloading = false;
 
-        gameObject.GetComponent<PlayerMovement>().speed = 10;
-        print("Set speed to 10");
+        gameObject.GetComponent<PlayerMovement>().speed = gameObject.GetComponent<PlayerMovement>().gameSpeed;
+        print("Set speed to " + gameObject.GetComponent<PlayerMovement>().gameSpeed);
         BulletsShot = 0;
     }
 
