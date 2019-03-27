@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
     public float lerpSpeed;
 
+    public Sprite Crown;
     public PlayerAppearance appearance;
     Vector3 lastSynchedPos;
 
@@ -91,9 +92,11 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
         if( player.photonView.IsMine ) {
             // add score
+            FindObjectOfType<Audiomanager>().Play("Victory");
+            BigCrown();
             int wins = PlayerPrefs.GetInt( "wins", 0 );
             PlayerPrefs.SetInt( "wins", wins + 1 );
-            // could show win screen to winner
+ 
         }
         else {
             // and lose screen to losers
@@ -104,5 +107,15 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
             PlayerPrefs.SetInt( "nextLevel", 3 );
             PhotonNetwork.LoadLevel( 7 );
         }
+    }
+
+    void BigCrown()
+    {
+        photonView.RPC("SpawnCrown", RpcTarget.All);
+    }
+    [PunRPC]
+    public void SpawnCrown()
+    {
+        Instantiate(Crown);
     }
 }

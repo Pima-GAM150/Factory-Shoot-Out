@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSpeed: 10
   lerpSpeed: 0.1
+  Crown: {fileID: 21300000, guid: bfb4793e255b34943823d0f84a3a8023, type: 3}
   appearance: {fileID: 184}
   body: {fileID: 144}
   Player: {fileID: 147}

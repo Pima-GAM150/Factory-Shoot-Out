@@ -240,7 +240,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5bb8359754a4e0d41ac10dd0626d6e4b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2502,6 +2502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playersLeftAlive: 0
   lastPlayerAlive: {fileID: 0}
+  wait: 0
 --- !u!4 &1522658382
 Transform:
   m_ObjectHideFlags: 0
@@ -2514,7 +2515,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1593450440
 GameObject:
