@@ -26,6 +26,7 @@ public class Explosion : MonoBehaviour
         public void Hit()
     {
         animator.SetBool("Boom", true);
+        FindObjectOfType<Audiomanager>().Play("Explosion");
         box.enabled = false;
         ExplosionBox.enabled = true;
     }
