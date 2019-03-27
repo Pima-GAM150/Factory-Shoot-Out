@@ -8,7 +8,7 @@ public class NetworkedObjects : MonoBehaviour
 {
     public BoxCollider2D[] spawnBoxes;
 
-    [HideInInspector] public List<PhotonView> Players = new List<PhotonView>();
+    public List<PhotonView> Players = new List<PhotonView>();
 
     public static NetworkedObjects find;
 

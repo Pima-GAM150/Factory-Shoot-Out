@@ -8,19 +8,21 @@ public class WinTracker : MonoBehaviour
 {
     public int playersLeftAlive = 0;
     public PhotonView lastPlayerAlive = null;
+    public int wait;
 
 
     void Update()
     {
         DontDestroyOnLoad(gameObject);
-        StartCoroutine(Wait());
+        
         foreach ( PhotonView player in NetworkedObjects.find.Players)
         {
             
-            if (player.GetComponent<PlayerMovement>().alive)
+            if (player.GetComponent<PlayerMovement>().alive == false)//&& playersLeftAlive > 0)
             {
                 lastPlayerAlive = player;
-                playersLeftAlive++;
+                playersLeftAlive--;
+                print(playersLeftAlive);
             }
         }
 
@@ -37,6 +39,7 @@ public class WinTracker : MonoBehaviour
     }
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(10);
+        print("Waiting for" + wait + "seconds");
+        yield return new WaitForSeconds(wait);
     }
 }

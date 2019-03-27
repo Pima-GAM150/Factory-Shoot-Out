@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosivePrefab: {fileID: 8485424970944929079, guid: 0f51f775ae23ab949967e45437bbe59e,
     type: 3}
-  numberOfExplosivesMax: 1
+  numberOfExplosivesMax: 2
   numberOfExplosivesPlaced: 0
   appearance: {fileID: 184}
 --- !u!1 &102

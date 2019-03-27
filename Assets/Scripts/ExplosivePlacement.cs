@@ -12,18 +12,18 @@ public class ExplosivePlacement : MonoBehaviourPun
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && gameObject.GetComponent<PlayerMovement>().alive == true)
         {
             if (numberOfExplosivesPlaced < numberOfExplosivesMax)
             {
-                photonView.RPC("SpawnBullet", RpcTarget.All, explosivePrefab );
+                photonView.RPC("SpawnExplosive", RpcTarget.All);
                 numberOfExplosivesPlaced++;
             }
         }
     }
 
     [PunRPC]
-    public void SpawnExplosive(Vector2 target)
+    public void SpawnExplosive()
     {
         Explosion newExplosion = Instantiate<Explosion>(explosivePrefab, appearance.skin.bulletSpawnLoc.position, Quaternion.identity);
     }
