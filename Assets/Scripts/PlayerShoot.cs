@@ -98,14 +98,9 @@ public class PlayerShoot : MonoBehaviourPun
 
         Reloading = false;
 
-<<<<<<< Updated upstream
         gameObject.GetComponent<PlayerMovement>().speed = gameObject.GetComponent<PlayerMovement>().gameSpeed;
         print("Set speed to " + gameObject.GetComponent<PlayerMovement>().gameSpeed);
         BulletsShot = 0;
-=======
-        gameObject.GetComponent<PlayerMovement>().speed = 10;
-        BulletsShot = 0;
->>>>>>> Stashed changes
     }
 
     [PunRPC]
