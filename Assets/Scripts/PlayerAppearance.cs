@@ -30,7 +30,7 @@ public class PlayerAppearance : MonoBehaviourPun
     }
     else {
       playerCam.transform.parent = skin.transform;
-      playerCam.transform.localPosition = new Vector3( 0f, 0f, playerCam.transform.localPosition.z );
+      playerCam.transform.localPosition = new Vector3( 0f, 0f, -1f );
     }
   }
 }

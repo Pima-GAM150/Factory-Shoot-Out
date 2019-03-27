@@ -56,7 +56,6 @@ MonoBehaviour:
   appearance: {fileID: 184}
   body: {fileID: 144}
   Player: {fileID: 147}
-  alive: 0
 --- !u!114 &184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,11 +444,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 122}
     m_Modifications:
-    - target: {fileID: 6580944415032469611, guid: f4ae662ed68ac4aadaa02a5fc1a8b4d9,
-        type: 3}
-      propertyPath: m_Name
-      value: Blue Appearance
-      objectReference: {fileID: 0}
     - target: {fileID: 7028826096068885231, guid: f4ae662ed68ac4aadaa02a5fc1a8b4d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -504,6 +498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580944415032469611, guid: f4ae662ed68ac4aadaa02a5fc1a8b4d9,
+        type: 3}
+      propertyPath: m_Name
+      value: Blue Appearance
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4ae662ed68ac4aadaa02a5fc1a8b4d9, type: 3}
