@@ -11,11 +11,16 @@ public class Explosion : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D col)
     {
         PlayerBody hitBody = col.GetComponent<PlayerBody>();
+        Explosion hitBomb = col.GetComponent<Explosion>();
         if (hitBody)
         {
             hitBody.movement.Hit();
 
 
+        }
+        if (hitBomb)
+        {
+            Hit();
         }
     }
         public void Hit()
