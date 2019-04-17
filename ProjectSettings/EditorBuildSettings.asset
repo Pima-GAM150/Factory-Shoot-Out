@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Load Next Level Proxy.unity
     guid: 617d7c3e3371c4d208acfb9bf1e7a34a
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: e7de8374d570f74409005245d5525ae7
   m_configObjects: {}

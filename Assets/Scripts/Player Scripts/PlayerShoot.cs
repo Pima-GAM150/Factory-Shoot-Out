@@ -38,7 +38,7 @@ public class PlayerShoot : MonoBehaviourPun
             appearance.skin.animator.SetBool("Shoot", false);
             shooting = false;
 
-            if( photonView.IsMine )
+            if (photonView.IsMine)
             {
                 gameObject.GetComponent<PlayerMovement>().speed = gameObject.GetComponent<PlayerMovement>().gameSpeed;
             }
@@ -48,7 +48,8 @@ public class PlayerShoot : MonoBehaviourPun
 
         if (!photonView.IsMine) return;
 
-        if(Input.GetButtonDown("Fire1"))
+        //GetComponent<KeyBindings>().keys["Shoot"].ToString()
+        if (Input.GetButtonDown("Fire1"))
         {
             if (BulletsShot < NumberofBullets && shooting == false && Reloading == false && gameObject.GetComponent<PlayerMovement>().alive == true)
             {
@@ -60,6 +61,8 @@ public class PlayerShoot : MonoBehaviourPun
                 photonView.RPC("SpawnBullet", RpcTarget.All, (Vector2)worldMousePos);
             }   
         }
+
+        //GetComponent<KeyBindings>().keys["Shoot"].ToString())
         if (Input.GetButtonDown("Fire2") && shooting == false && Reloading == false && gameObject.GetComponent<PlayerMovement>().alive == true)
         {
             // FindObjectOfType<Audiomanager>().Play("Reloading");

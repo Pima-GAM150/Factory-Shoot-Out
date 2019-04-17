@@ -182,7 +182,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Shootin' Range
+  m_Text: Gun Inspection
 --- !u!222 &283334957
 CanvasRenderer:
   m_ObjectHideFlags: 0

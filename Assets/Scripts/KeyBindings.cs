@@ -6,14 +6,14 @@ using TMPro;
 
 public class KeyBindings : MonoBehaviour
 {
-    private Dictionary<string, KeyCode> keys = new Dictionary<string, KeyCode>();
+    public Dictionary<string, KeyCode> keys = new Dictionary<string, KeyCode>();
 
     public TextMeshProUGUI shoot, reload, barrel, up, down, left, right;
 
     private GameObject currentKey;
 
-    private Color normal = new Color32(39, 171, 249, 255);
-    private Color selected = new Color32(239, 116, 36, 255);
+    private Color normal = new Color32(225, 246, 179, 255);
+    private Color selected = new Color32(179, 188, 255, 255);
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +33,7 @@ public class KeyBindings : MonoBehaviour
         down.text = keys["Down"].ToString();
         left.text = keys["Left"].ToString();
         right.text = keys["Right"].ToString();
+        //DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame

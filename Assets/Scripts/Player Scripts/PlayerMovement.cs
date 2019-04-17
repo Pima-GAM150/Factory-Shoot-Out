@@ -36,6 +36,10 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     // Update is called once per frame
     void FixedUpdate()
     {
+        //GetComponent<KeyBindings>().keys["Up"].ToString()
+        //GetComponent<KeyBindings>().keys["Down"].ToString()
+        //GetComponent<KeyBindings>().keys["Left"].ToString()
+        //GetComponent<KeyBindings>().keys["Right"].ToString()
         if (photonView.IsMine)
         {
             float x = Input.GetAxis("Horizontal") * speed;
