@@ -13,10 +13,10 @@ public class ExplosivePlacement : MonoBehaviourPun
 
     private void Update()
     {
-        
-        if (photonView.IsMine)
+
+        if (this.photonView.IsMine)
         {
-            if (this.photonView.IsMine)
+            if (Input.GetButtonDown("Jump"))
             {
                 if (numberOfExplosivesPlaced < numberOfExplosivesMax)
                 {
