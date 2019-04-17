@@ -12,8 +12,8 @@ public class KeyBindings : MonoBehaviour
 
     private GameObject currentKey;
 
-    private Color normal = new Color32(225, 246, 179, 255);
-    private Color selected = new Color32(179, 188, 255, 255);
+    public Color normal;
+    public Color selected;
 
     // Start is called before the first frame update
     void Start()
