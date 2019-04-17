@@ -1647,6 +1647,8 @@ MonoBehaviour:
   down: {fileID: 29542197}
   left: {fileID: 1697627191}
   right: {fileID: 1769884407}
+  normal: {r: 1, g: 1, b: 0.7019608, a: 1}
+  selected: {r: 0.7019608, g: 0.7372549, b: 1, a: 1}
 --- !u!4 &721550865
 Transform:
   m_ObjectHideFlags: 0
@@ -3056,7 +3058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9647059, b: 0.7019608, a: 1}
+  m_Color: {r: 1, g: 1, b: 0.7019608, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

@@ -20,7 +20,7 @@ public class ExplosivePlacement : MonoBehaviourPun
             {
                 if (numberOfExplosivesPlaced < numberOfExplosivesMax)
                 {
-                    photonView.RPC("SpawnExplosive", RpcTarget.All);
+                    SpawnExplosive();
                     numberOfExplosivesPlaced++;
                 }
             }
@@ -28,9 +28,11 @@ public class ExplosivePlacement : MonoBehaviourPun
         }
     }
 
-    [PunRPC]
+    //[PunRPC]
     public void SpawnExplosive()
     {
-        PhotonNetwork.Instantiate("Explosive", position.position, Quaternion.identity, 0);
+        GameObject barrel = PhotonNetwork.Instantiate("Explosive", position.position, Quaternion.identity, 0);
+
+        barrel.GetComponent<PhotonView>().RPC("SetColor", RpcTarget.AllBuffered, GetComponent<PlayerAppearance>().order);
     }
 }
