@@ -16,8 +16,7 @@ public class ExplosivePlacement : MonoBehaviourPun
         
         if (photonView.IsMine)
         {
-            //GetComponent<KeyBindings>().keys["Barrel"].ToString()
-            if (Input.GetButtonDown("Jump") && gameObject.GetComponent<PlayerMovement>().alive == true)
+            if (this.photonView.IsMine)
             {
                 if (numberOfExplosivesPlaced < numberOfExplosivesMax)
                 {
@@ -25,6 +24,7 @@ public class ExplosivePlacement : MonoBehaviourPun
                     numberOfExplosivesPlaced++;
                 }
             }
+
         }
     }
 
