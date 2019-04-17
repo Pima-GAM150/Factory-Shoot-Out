@@ -151,11 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1daabcd918ff4e1488cd6d531a8a329b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosivePrefab: {fileID: 8485424970944929079, guid: 0f51f775ae23ab949967e45437bbe59e,
-    type: 3}
   numberOfExplosivesMax: 2
   numberOfExplosivesPlaced: 0
-  appearance: {fileID: 184}
+  position: {fileID: 123}
 --- !u!1 &102
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,19 +5,25 @@ using Photon.Pun;
 
 public class ExplosivePlacement : MonoBehaviourPun
 {
-    public Explosion explosivePrefab;
+    //public Explosion explosivePrefab;
     public float numberOfExplosivesMax;
     public float numberOfExplosivesPlaced;
-    public PlayerAppearance appearance;
+    //public PlayerAppearance appearance;
+    public Transform position;
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && gameObject.GetComponent<PlayerMovement>().alive == true)
+        
+        if (photonView.IsMine)
         {
-            if (numberOfExplosivesPlaced < numberOfExplosivesMax)
+            //GetComponent<KeyBindings>().keys["Barrel"].ToString()
+            if (Input.GetButtonDown("Jump") && gameObject.GetComponent<PlayerMovement>().alive == true)
             {
-                photonView.RPC("SpawnExplosive", RpcTarget.All);
-                numberOfExplosivesPlaced++;
+                if (numberOfExplosivesPlaced < numberOfExplosivesMax)
+                {
+                    photonView.RPC("SpawnExplosive", RpcTarget.All);
+                    numberOfExplosivesPlaced++;
+                }
             }
         }
     }
@@ -25,6 +31,6 @@ public class ExplosivePlacement : MonoBehaviourPun
     [PunRPC]
     public void SpawnExplosive()
     {
-        Explosion newExplosion = Instantiate<Explosion>(explosivePrefab, appearance.skin.bulletSpawnLoc.position, Quaternion.identity);
+        PhotonNetwork.Instantiate("Explosive", position.position, Quaternion.identity, 0);
     }
 }
