@@ -77,6 +77,7 @@ MonoBehaviour:
   - {fileID: 7841391492846940015, guid: 6bdb08e805607b448b2f963ee7b30967, type: 3}
   - {fileID: 918796432678299662, guid: 51fbb91314488e846812fe29f476ef7e, type: 3}
   skin: {fileID: 8447079543483460246}
+  order: 0
   playerCam: {fileID: 143}
 --- !u!114 &185
 MonoBehaviour:

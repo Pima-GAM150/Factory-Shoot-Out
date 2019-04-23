@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5966969558002356269}
   - component: {fileID: 2502745302787929490}
   - component: {fileID: 2243073243667132958}
+  - component: {fileID: 5033647667329111712}
   m_Layer: 0
   m_Name: Green Explosion Appearance
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 9004928289301981161}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -91,7 +92,7 @@ Animator:
   m_GameObject: {fileID: 9004928289301981161}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 462df73ce258ff344b38b5f99980e847, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -114,3 +115,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5966969558002356269}
   animator: {fileID: 2502745302787929490}
+  circleCollider: {fileID: 5033647667329111712}
+--- !u!58 &5033647667329111712
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9004928289301981161}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.17062521}
+  serializedVersion: 2
+  m_Radius: 0.0001

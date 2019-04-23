@@ -16,5 +16,6 @@ public class BarrelAppearance : MonoBehaviour
 
         skin = Instantiate<BarrelSkin>(barrelSkin[order]);
         skin.transform.parent = transform;
+        skin.transform.localPosition = Vector3.zero;
     }
 }

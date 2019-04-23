@@ -13,6 +13,7 @@ public class PlayerAppearance : MonoBehaviourPun
 	// new
 	public PlayerSkin[] playerSkins;
 	public PlayerSkin skin;
+    public int order;
 
   public Camera playerCam;
 
@@ -23,6 +24,7 @@ public class PlayerAppearance : MonoBehaviourPun
 
   	skin = Instantiate<PlayerSkin>( playerSkins[order] );
     skin.transform.parent = transform;
+        this.order = order;
 
     // handle camera
     if( !photonView.IsMine ) {
