@@ -14,14 +14,19 @@ public class BulletCollision : MonoBehaviour
 	}
 
 	public void OnTriggerEnter2D( Collider2D col ) {
+        if (PhotonNetwork.IsMasterClient == false)
+        {
+            return;
+        }
         PlayerBody hitBody = col.GetComponent<PlayerBody>();
         Explosion hitBomb = col.GetComponent<Explosion>();
 
-		if(hitBody) {
+		
+        if(hitBody) {
 			if(owner == hitBody.shoot) {
 				return;
 			}
-            hitBody.movement.Hit();
+            hitBody.movement.photonView.RPC("Hit", RpcTarget.All);
 
             Destroy(this.gameObject);
         }
@@ -30,7 +35,7 @@ public class BulletCollision : MonoBehaviour
             hitBomb.Hit();
             Destroy(this.gameObject);
         }
-        if( col.gameObject.name == "World Border")
+        if (col.gameObject.name == "World Border")
         {
             Destroy(this.gameObject);
         }

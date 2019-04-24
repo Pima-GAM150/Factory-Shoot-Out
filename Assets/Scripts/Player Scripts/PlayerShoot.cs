@@ -58,7 +58,7 @@ public class PlayerShoot : MonoBehaviourPun
                 gameObject.GetComponent<PlayerMovement>().speed = 0;
                 BulletsShot = 1+BulletsShot;
                 Vector3 worldMousePos = playerCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
-                GetComponent<ShownBullets>().BulletShot();
+                //GetComponent<ShownBullets>().BulletShot();
                 photonView.RPC("SpawnBullet", RpcTarget.All, (Vector2)worldMousePos);
             }   
         }

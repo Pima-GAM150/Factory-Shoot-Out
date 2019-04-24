@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
         }
     }
 
+    [PunRPC]
     public void Hit()
     {
         FindObjectOfType<Audiomanager>().Play("Death");
