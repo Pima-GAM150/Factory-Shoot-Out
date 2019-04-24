@@ -5,24 +5,33 @@ using UnityEngine;
 public class ShownBullets : MonoBehaviour
 {
     public GameObject[] bullets;
+
+    public static ShownBullets find;
     void Start()
     {
-        
+        find = this;
     }
 
-    public void BulletShot()
+    public void BulletShot(int BulletsShot)
     {
-        if (bullets[1].activeSelf == true && bullets[2].activeSelf == true && bullets[3].activeSelf == true)
+        print(BulletsShot);
+        foreach (GameObject bullet in bullets)
         {
-            print("turned off bullet 1");
+            bullet.SetActive(true);
         }
-        if (bullets[1].activeSelf == false && bullets[2].activeSelf == true && bullets[3].activeSelf == true)
+        for (int i = 0; i < BulletsShot; i++)
         {
-            print("turned off bullet 2");
-        }
-        if (bullets[1].activeSelf == false && bullets[2].activeSelf == false && bullets[3].activeSelf == true)
-        {
-            print("turned off bullet 3");
+            bullets[i].SetActive(false);
+            print("Setting " + i + " to false");
         }
     }
+
+    public void Reload (int BulletsShot)
+    {
+        foreach (GameObject bullet in bullets)
+        {
+            bullet.SetActive(true);
+        }
+    }
+
 }

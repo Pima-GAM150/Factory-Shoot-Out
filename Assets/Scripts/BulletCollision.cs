@@ -14,6 +14,10 @@ public class BulletCollision : MonoBehaviour
 	}
 
 	public void OnTriggerEnter2D( Collider2D col ) {
+        if (col.gameObject.name == "World Border")
+        {
+            Destroy(this.gameObject);
+        }
         if (PhotonNetwork.IsMasterClient == false)
         {
             return;
@@ -33,10 +37,6 @@ public class BulletCollision : MonoBehaviour
         if (hitBomb)
         {
             hitBomb.Hit();
-            Destroy(this.gameObject);
-        }
-        if (col.gameObject.name == "World Border")
-        {
             Destroy(this.gameObject);
         }
     }

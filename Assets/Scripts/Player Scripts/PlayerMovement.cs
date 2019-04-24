@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
         appearance.skin.animator.SetBool("Shoot", false);
         Player.enabled = true;
         alive = true;
+        speed = 10;
         // gameSpeed = gameObject.GetComponent<OptionsSettings>().setSpeed;
     }
 

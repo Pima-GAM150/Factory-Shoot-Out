@@ -1,12 +1,14 @@
 ﻿<Properties StartupConfiguration="{B693AC21-CE2A-174E-EDE2-ED350164F05C}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs">
     <Files>
-      <File FileName="Assets/Scripts/BulletCollision.cs" Line="28" Column="5" />
+      <File FileName="Assets/Scripts/BulletCollision.cs" Line="41" Column="10" />
       <File FileName="Assets/Scripts/Player Scripts/PlayerBody.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player Scripts/PlayerShoot.cs" Line="44" Column="119" />
+      <File FileName="Assets/Scripts/Player Scripts/PlayerShoot.cs" Line="61" Column="59" />
       <File FileName="Assets/Scripts/WinTracker.cs" Line="44" Column="8" />
-      <File FileName="Assets/Scripts/Player Scripts/PlayerMovement.cs" Line="71" Column="21" />
-      <File FileName="Assets/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs" Line="502" Column="1" />
+      <File FileName="Assets/Scripts/Player Scripts/PlayerMovement.cs" Line="33" Column="20" />
+      <File FileName="Assets/Scripts/ShownBullets.cs" Line="12" Column="20" />
+      <File FileName="Assets/Scripts/NetworkedObjects.cs" Line="37" Column="46" />
+      <File FileName="Assets/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs" Line="528" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

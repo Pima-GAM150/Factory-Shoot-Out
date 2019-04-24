@@ -17,7 +17,7 @@ public class PlayerShoot : MonoBehaviourPun
     public float ReloadmaxTime;
     public bool Reloading;
     public float NumberofBullets;
-    public float BulletsShot;
+    public int BulletsShot;
 
     public AudioSource reloadSound;
     // Start is called before the first frame update
@@ -58,7 +58,7 @@ public class PlayerShoot : MonoBehaviourPun
                 gameObject.GetComponent<PlayerMovement>().speed = 0;
                 BulletsShot = 1+BulletsShot;
                 Vector3 worldMousePos = playerCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
-                //GetComponent<ShownBullets>().BulletShot();
+                ShownBullets.find.BulletShot(BulletsShot);
                 photonView.RPC("SpawnBullet", RpcTarget.All, (Vector2)worldMousePos);
             }   
         }
@@ -67,7 +67,7 @@ public class PlayerShoot : MonoBehaviourPun
         if (Input.GetButtonDown("Fire2") && shooting == false && Reloading == false && gameObject.GetComponent<PlayerMovement>().alive == true)
         {
             // FindObjectOfType<Audiomanager>().Play("Reloading");
-
+            ShownBullets.find.Reload(BulletsShot);
             photonView.RPC("ReloadOverNetwork", RpcTarget.All, BulletsShot);
         }
     }
@@ -108,7 +108,7 @@ public class PlayerShoot : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void ReloadOverNetwork( float bulletsToReload )
+    public void ReloadOverNetwork( int bulletsToReload )
     {
         StartCoroutine(Reload( bulletsToReload ));
     }
