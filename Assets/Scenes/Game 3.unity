@@ -8784,6 +8784,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1904288698497280554, guid: f8a591b893afd44f4a5cd8f9b935fab7,
+        type: 3}
+      propertyPath: barrels.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904288698497280554, guid: f8a591b893afd44f4a5cd8f9b935fab7,
+        type: 3}
+      propertyPath: barrels.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904288698497280554, guid: f8a591b893afd44f4a5cd8f9b935fab7,
+        type: 3}
+      propertyPath: barrels.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8a591b893afd44f4a5cd8f9b935fab7, type: 3}
 --- !u!224 &1853493434 stripped

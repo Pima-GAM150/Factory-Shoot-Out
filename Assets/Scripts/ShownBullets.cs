@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShownBullets : MonoBehaviour
 {
     public GameObject[] bullets;
+    public GameObject[] barrels;
 
     public static ShownBullets find;
     void Start()
@@ -31,6 +32,19 @@ public class ShownBullets : MonoBehaviour
         foreach (GameObject bullet in bullets)
         {
             bullet.SetActive(true);
+        }
+    }
+
+    public void BarrelPlaced(float numberOfExplosivesPlaced)
+    {
+        foreach (GameObject barrel in barrels)
+        {
+            barrel.SetActive(true);
+        }
+        for (int b = 0; b < numberOfExplosivesPlaced; b++)
+        {
+            barrels[b].SetActive(false);
+            print(" Setting " + b + "off");
         }
     }
 
