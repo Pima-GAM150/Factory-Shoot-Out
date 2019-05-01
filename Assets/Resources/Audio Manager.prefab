@@ -74,3 +74,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Shoot
+    clip: {fileID: 8300000, guid: e21cbcf4d11a368428ac4dd24500a1c7, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  animator: {fileID: 4618072598668220688, guid: ef79c0724f7b84b81aac0104dd175b2d,
+    type: 3}
+  dirty: 0

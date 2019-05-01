@@ -1,11 +1,15 @@
 ﻿using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class Audiomanager : MonoBehaviour
 {
     public Sound[] sounds;
     public static Audiomanager instance;
+
+    public Animator animator;
+    public bool dirty;
 
     void Awake()
     {
@@ -29,10 +33,7 @@ public class Audiomanager : MonoBehaviour
             s.source.loop = s.loop;
         }
     }
-    void Start()
-    {
-        Play("Theme");
-    }
+
     //FindObjectOfType<Audiomanager>().Play("Name of Sound");
     public void Play(string name)
     {
@@ -43,5 +44,27 @@ public class Audiomanager : MonoBehaviour
             return;
         }
         s.source.Play();
+    }
+
+    void Start()
+
+        OpenGame();
+
+
+    }
+
+    public void OpenGame()
+    { 
+        animator.SetBool("runAnimator", true);
+        StartCoroutine("WaitAndPlay");
+
+
+    }
+
+    IEnumerator WaitAndPlay()
+    {
+        yield return new WaitForSeconds(1.25f);
+        Play("Theme");
+        dirty = true;
     }
 }
