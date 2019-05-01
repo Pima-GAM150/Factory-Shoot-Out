@@ -20,8 +20,10 @@ public class ExplosivePlacement : MonoBehaviourPun
             {
                 if (numberOfExplosivesPlaced < numberOfExplosivesMax)
                 {
-                    SpawnExplosive();
                     numberOfExplosivesPlaced++;
+                    ShownBullets.find.BarrelPlaced(numberOfExplosivesPlaced);
+                    SpawnExplosive();
+                    
                 }
             }
 

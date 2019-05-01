@@ -7,7 +7,7 @@ public class LoadNextLevel : MonoBehaviour
 {
 	void Start() {
 		if( PhotonNetwork.IsMasterClient ) {
-		    PhotonNetwork.LoadLevel(Random.Range(3, 6));
+		    PhotonNetwork.LoadLevel(Random.Range(3, 7));
 		}
 	}
 }

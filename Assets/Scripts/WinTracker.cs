@@ -11,7 +11,7 @@ public class WinTracker : MonoBehaviour
     public int wait;
 
 
-    void Update()
+   /* void Update()
     {
         DontDestroyOnLoad(gameObject);
         
@@ -41,5 +41,5 @@ public class WinTracker : MonoBehaviour
     {
         print("Waiting for" + wait + "seconds");
         yield return new WaitForSeconds(wait);
-    }
+    }*/
 }
