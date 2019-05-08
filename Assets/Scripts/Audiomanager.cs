@@ -47,11 +47,12 @@ public class Audiomanager : MonoBehaviour
     }
 
     void Start()
-
+    {
         OpenGame();
-
-
     }
+
+
+    
 
     public void OpenGame()
     { 
